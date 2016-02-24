@@ -14,7 +14,9 @@ To generate `html` run the following command in the root directory
 ./gradlew compileMarkdown
 ```
 
-The output document will be placed in the `out/gen-html` folder
+The output document will be placed in the `out/gen-html` folder. Here is the sample document rendered
+
+![Sample output](https://cloud.githubusercontent.com/assets/2018617/13298568/f4b9723c-db3f-11e5-84b0-071c39d251a7.png)
 
 #License
 Copyright 2016 Nish Tahir
