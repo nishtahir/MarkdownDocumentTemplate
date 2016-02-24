@@ -1,0 +1,58 @@
+apply plugin: 'org.kordamp.markdown.convert'
+
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://dl.bintray.com/content/aalmiray/kordamp' }
+    }
+    dependencies {
+        classpath 'org.kordamp:markdown-gradle-plugin:1.1.0'
+    }
+}
+
+def markdownInputDir = file('src/markdown/')
+def htmlOutputDir = file('out/gen-html/')
+def excludedDirs = ['resources']
+def template = file('src/resources/template/base_template.html')
+
+markdownToHtml {
+
+  doFirst {
+    delete htmlOutputDir
+  }
+
+  baseUri './'
+  sourceDir markdownInputDir
+  outputDir htmlOutputDir
+  all true
+
+  doLast {
+    htmlOutputDir.traverse(
+      preDir       : { if (it.name in excludedDirs)
+        return groovy.io.FileVisitResult.SKIP_SUBTREE },
+      excludeNameFilter   : { it in excludedDirs }
+    ) { file ->
+      String output = template.text
+      output = output.replace('{body}', file.text)
+                     .replace('{title}', file.name)
+
+      file.write output
+    }
+  }
+}
+
+task copyResources(type: Copy) {
+    from 'src/resources'
+    into 'out/gen-html/resources'
+}
+
+copyResources.dependsOn markdownToHtml
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task compileMarkdown(dependsOn: copyResources) {
+}
