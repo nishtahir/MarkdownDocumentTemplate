@@ -16,7 +16,7 @@ To generate `html` run the following command in the root directory
 
 The output document will be placed in the `out/gen-html` folder. Here is the sample document rendered
 
-![Sample output](https://cloud.githubusercontent.com/assets/2018617/13298568/f4b9723c-db3f-11e5-84b0-071c39d251a7.png)
+![Sample output](https://cloud.githubusercontent.com/assets/2018617/13571129/873b9286-e47b-11e5-98e2-c5f5bd6ab0ed.png)
 
 #License
 Copyright 2016 Nish Tahir
