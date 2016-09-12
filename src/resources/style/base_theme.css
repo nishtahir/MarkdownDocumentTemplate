@@ -266,6 +266,7 @@ span.float-right > span {
 code, tt {
    margin: 0 2px;
    padding: 0 5px;
+   font-size: 13px;
    white-space: nowrap;
    border: 1px solid #eaeaea;
    background-color: #f8f8f8;
